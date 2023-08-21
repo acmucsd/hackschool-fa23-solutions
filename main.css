@@ -7,6 +7,8 @@ body {
     -moz-osx-font-smoothing: grayscale;
 }
 
+/* Navbar Styling */
+
 #navbar {
     /*
     - Change background color to #f9a857
@@ -51,11 +53,19 @@ body {
     text-decoration: none;
 }
 
+/* Homepage Styling */
+
 .center {
     display: block;
     margin-left: auto;
     margin-right: auto;
 }
+
+.welcome {
+    font-size: 25px;
+}
+
+/* HackRacer Game Page Styling */
 
 #sentence {
     display: block;
@@ -70,6 +80,74 @@ body {
     font-size: 25px;
 }
 
-.welcome {
+/* Create a Sentence Page Styling */
+
+.create-sentence {
+    /*
+    - Make it a flex container where items are spaced evenly and aligned to the center
+    */
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.sentence-form {
+    /*
+    - Make it a flex container where items arranged in a column and aligned to the center
+    */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form-row {
+    /*
+    - Add a 16px bottom margin
+    */
+    margin-bottom: 16px;
+}
+
+.form-row p {
+    /*
+    - Change font for textarea
+    - Change font-size to 20px
+    */
+    font-size: 20px;
+}
+
+textarea {
+    /*
+    - Change font for textarea
+    - Change font-size to 25px
+    */
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
     font-size: 25px;
+}
+
+#sentence-submission {
+    /*
+    - Change background color to black
+    - Change font color to orange #f9a857
+    - Increase the font size to 20px
+    - Add padding 10px vertically 24 px horizontally
+    - Add rounded corners with border-radius 4px
+    */
+    background-color: #f9a857;
+    color: white;
+    font-size: 20px;
+    padding: 10px 24px;
+    border-radius: 4px;
+    border-color: #f9a857;
+}
+
+/* Changes style on hover */
+#sentence-submission:hover {
+    /*
+    - Change opacity to 80%
+    - Change mouse cursor to pointer
+    */
+    opacity: 80%;
+    cursor: pointer;
 }
