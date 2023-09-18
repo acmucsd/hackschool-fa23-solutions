@@ -11,10 +11,10 @@ Install Next.js and React
 
 ```npm install next react react-dom ```
 
-Install Express.js 
+<!-- Install Express.js 
 
 ```npm install express```
- 
+  -->
 (Optional) Install nodemon 
 
 ```npm install --save-dev nodemon```

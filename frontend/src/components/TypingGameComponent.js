@@ -7,7 +7,7 @@
 import React, { useEffect, useCallback, useState } from "react";
 import useTypingGame, {PhaseType} from "react-typing-game-hook"; // for playing the game
 import axios from "axios"; // to make HTTP requests to the backend
-//import styles from "./TypingGameComponent.module.css"
+//import "./TypingGameComponent.module.css";
 console.log("Rendering the Typing Game component...");
 
 const TypingGameComponent = () => {
@@ -93,7 +93,7 @@ const TypingGameComponent = () => {
       { !gameStarted ?  (
         <button className="start-button" onClick={handleGameStart}>Start</button> // call handleGameStart when Start is clicked
       ) : (
-        <h2
+        <h2 
           onKeyDown={(e) => {
             // call different functions based on the key clicked
             const key = e.key;
