@@ -1,24 +1,32 @@
-import React from 'react';
-import TypingGameComponent from '../components/TypingGameComponent';
-import InputSentenceComponent from '../components/InputSentenceComponent';
+import React from "react";
+import Link from "next/link"
+// Navigation in Next.js is slightly different from react. 
+// Look at: https://nextjs.org/docs/app/building-your-application/routing/linking-and-navigating
 
 
 function App() {
   return (
     <div className="App">
-      <h1>Hack Racer</h1>
-      <div  className='input-sentence-component'> 
-        <h2>Create custom sentences! </h2>
-        <InputSentenceComponent/>
-      </div>
+      <nav>
+      <ul>
+          <li> Stats </li>
+      </ul>
+    </nav>
+       <h1>Hack Racer</h1>
+      <Link href="/gamePage">
+          <button>New Game</button>
+      </Link>
+      <br />
+      <Link href="/sentencePage">
+          <button>Create Custom Sentences</button>
+      </Link>
+
+     
       
-      <div className='game-component'>  
-        <h2>Play!</h2>
-        <TypingGameComponent/>
-      </div>
+
+      
     </div>
   );
 }
 
 export default App;
-

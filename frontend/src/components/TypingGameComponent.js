@@ -15,7 +15,7 @@ const TypingGameComponent = () => {
   const [statsObject, setStatsObject] = useState(null); // ensures object is not undefined
  
   // useTypingGame to keep track of, and modify chars being typed and other stuff
-  let text = "hi this is a tester";
+  let text = "The quick brown fox, jumps over the lazy dog.";
   const {
     states: { chars, charsState, phase, correctChar, errorChar},
     actions: { insertTyping, resetTyping, deleteTyping, getDuration },
