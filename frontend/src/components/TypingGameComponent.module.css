@@ -1,3 +1,53 @@
-h2{
-    font-size: large;
+.typing_game {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 100vw;
+    text-align: center;
+}
+.start_game {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+
+}
+.sentence_label {
+    font-size: 1.5rem;
+}
+
+#sentence_selector {
+    font-size: 1.5rem;
+}
+
+.start_button {
+    background-color: #f9a857;
+    color: white;
+    padding: 10px 24px;
+    font-size: 20px;
+    border-radius: 4px;
+    border-color: #f9a857;
+}
+
+.start_button:hover {
+    /*
+    - Change opacity to 80%
+    - Change mouse cursor to pointer
+    */
+    opacity: 80%;
+    cursor: pointer;
+}
+
+.typing_component {
+    padding: 1rem;
+    border: 2px solid black;
+    font-size: 2rem;
+    text-align: center;
+}
+
+.stats {
+    font-size: 1.5rem;
+}
+
+.stat_header {
+    color: #f9a857;
 }

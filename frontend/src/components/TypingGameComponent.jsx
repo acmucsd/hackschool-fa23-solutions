@@ -7,19 +7,23 @@
 import React, { useEffect, useCallback, useState } from "react";
 import useTypingGame, {PhaseType} from "react-typing-game-hook"; // for playing the game
 import axios from "axios"; // to make HTTP requests to the backend
-//import "./TypingGameComponent.module.css";
+import styles from "./TypingGameComponent.module.css";
 console.log("Rendering the Typing Game component...");
+
+const sentenceData = ["Joining the ACM club was the best decision I made in college!",
+"ACM club members collaborated on a challenging software development project",
+"ACM Hack is hosting a React workshop :O", "ChatGPT helped me write these sentences, possibly :)"];
 
 const TypingGameComponent = () => {
   const [gameStarted, setGameStarted] = useState(false); // checks if the game has begun
   const [statsObject, setStatsObject] = useState(null); // ensures object is not undefined
+  const [selectedSentence, setSelectedSentence] = useState(sentenceData[0]); // sentence for typing game
  
   // useTypingGame to keep track of, and modify chars being typed and other stuff
-  let text = "hi this is a tester";
   const {
     states: { chars, charsState, phase, correctChar, errorChar},
     actions: { insertTyping, resetTyping, deleteTyping, getDuration },
-  } = useTypingGame(text , { // i copied this object from the docs so idk what tgat is o
+  } = useTypingGame(selectedSentence, {
     skipCurrentWordOnSpace: true,
     pauseOnError: false,
     countErrors: "everytime",
@@ -52,12 +56,12 @@ const TypingGameComponent = () => {
 
   const calculateWPM = useCallback(() => {
     console.log("calculating words per min...");
-    let numWords = text.split(" ").length;
+    let numWords = selectedSentence.split(" ").length;
     let time = (getDuration()/ 1000)/60;
     console.log("number of words: " + numWords);
     console.log("duration in mins: " + time)
     return numWords / time; // i think this is wrong lol 
-  }, [getDuration, text])
+  }, [getDuration, selectedSentence])
 
   // if the game has ended, we send the game stats to the DB 
   const handleGameEnd = useCallback(() => {
@@ -89,10 +93,23 @@ const TypingGameComponent = () => {
 
   // here, we render the game
   return (
-    <div>
+    <div className={styles.typing_game}>
       { !gameStarted ?  (
-        <button className="start-button" onClick={handleGameStart}>Start</button> // call handleGameStart when Start is clicked
+        <div className={styles.start_game}>
+          <div className={styles.sentence_dropdown}>
+            <h3 className={styles.sentence_label}>Select a sentence</h3>
+            <select name="sentence-select" 
+            id={styles.sentence_selector}
+            onChange={(e) => setSelectedSentence(e.target.value)}>
+                {sentenceData.map((sentence, index) => (
+                    <option key={index}>{sentence}</option>
+                ))}
+            </select>
+        </div>
+          <button className={styles.start_button} onClick={handleGameStart}>Start</button>
+        </div>
       ) : (
+        <div className={styles.typing_component}>
         <h2 
           onKeyDown={(e) => {
             // call different functions based on the key clicked
@@ -126,15 +143,16 @@ const TypingGameComponent = () => {
             );
           })}
         </h2>
+        </div>
       )}
       {statsObject && ( // Check if statsObject is not null before displaying it
-        <div className="stats">
-          <h3>Stats:</h3>
-          <p>Sentence: {statsObject.sentence}</p>
-          <p>Correct Characters: {statsObject.correctcharacters}</p>
-          <p>Incorrect Characters: {statsObject.incorrectcharacters}</p>
-          <p>Words Per Minute: {statsObject.wpm}</p>
-          <p>Time (in mins): {statsObject.time}</p>
+        <div className={styles.stats}>
+          <h3 className={styles.stat_header}>Stats:</h3>
+          <p><b>Sentence:</b> {statsObject.sentence}</p>
+          <p><b>Correct Characters:</b> {statsObject.correctcharacters}</p>
+          <p><b>Incorrect Characters:</b> {statsObject.incorrectcharacters}</p>
+          <p><b>Words Per Minute:</b> {statsObject.wpm}</p>
+          <p><b>Time (in mins):</b> {statsObject.time}</p>
         </div>
       )}
     </div>
