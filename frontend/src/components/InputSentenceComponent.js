@@ -1,6 +1,8 @@
 import React, {useState} from "react";
 import axios from "axios";
 
+// update 
+// delete 
 
 const InputSentenceComponent =  () =>  {
     const [sentence, setSentence] = useState(""); // make a default empty string state to avoid getting undefined objs 
