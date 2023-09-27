@@ -12,6 +12,7 @@ const NavBar = () => {
             <div className={styles.nav_buttons}>
                 <Link href="/sentencePage">Add Sentence</Link>
                 <Link href="/gamePage">Play Game</Link>
+                <Link href="/history"> History </Link>
             </div>
         </div>
     )
