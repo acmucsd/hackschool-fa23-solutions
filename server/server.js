@@ -2,17 +2,12 @@
 
 //dependencies 
 const express = require('express');
-<<<<<<< HEAD:backend/server.js
 const cors = require('cors');
 
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
-=======
-//const cors = require('cors');
-//const dotenv = require('dotenv');
->>>>>>> part4:server/server.js
 const app = express(); 
-//const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5000;
 
 // get the routes
 const gameRoutes = require('./routes/gameRoutes');
@@ -51,3 +46,4 @@ app.use(function (err, req, res, next) {
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`); // print this if server runs
 });
+

@@ -1,3 +1,4 @@
+// Not using this file 
 const inputSentence = require("../models/inputSentence");
 
 exports.createInputSentence = async (req, res) => {
