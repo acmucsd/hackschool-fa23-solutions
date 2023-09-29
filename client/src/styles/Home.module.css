@@ -1,0 +1,13 @@
+/* Homepage Styling */
+
+.welcome {
+  font-size: 25px;
+  justify-content: center;
+  text-align: center;
+}
+
+.image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
