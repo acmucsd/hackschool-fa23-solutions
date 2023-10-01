@@ -1,9 +1,8 @@
-// Not using this file 
 const inputSentence = require("../models/inputSentence");
 
 exports.createInputSentence = async (req, res) => {
   try {
-    const { sentence } = req.body;
+    const { sentence } = "hello world";
     const newInputSentence = new inputSentence({ sentence });
     await newInputSentence.save();
     res.status(201).json(newInputSentence);
@@ -14,14 +13,15 @@ exports.createInputSentence = async (req, res) => {
   }
 };
 
-exports.getAllInputSentences = async (req, res) => {
-  try {
-    const inputSentences = await inputSentence.find();
-    res.json(inputSentences);
-  } catch (error) {
-    res.status(500).json({ message: "cant fetch sentences", error });
-  }
-};
+// how do i hardcode this for get all???
+// exports.getAllInputSentences = async (req, res) => {
+//   try {
+//     const inputSentences = await inputSentence.find();
+//     res.json(inputSentences);
+//   } catch (error) {
+//     res.status(500).json({ message: "cant fetch sentences", error });
+//   }
+// };
 
 exports.getInputSentenceById = async (req, res) => {
   try {
