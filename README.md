@@ -1,9 +1,9 @@
-# Hack School Fall 2023: Workshop 3 Solutions
+# Hack School Fall 2023: Workshop 4 Solutions
 
-Workshop Topic: React & Next.js
+Workshop Topic: Express.js and APIs
 
 To run the code:
-
-1. `cd client`
+1. `cd client` `cd server`
 2. `npm install`
 3. `npm run dev`
+
