@@ -1,6 +1,6 @@
-import TypingGameComponent from "../components/TypingGameComponent";
+import TypingGameComponent from "../components/typing-game-component/TypingGameComponent";
 
-export default function gamePage() {
+export default function GamePage() {
     return(
         <div className="game-component">
         <TypingGameComponent />

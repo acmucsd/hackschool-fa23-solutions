@@ -1,28 +1,29 @@
-import CardComponent from "@/components/CardComponent";
+import CardComponent from "@/components/card-component/CardComponent";
+import styles from '../styles/History.module.css'
 
-export default function history() {
+export default function History() {
   return (
-    <div style={{ padding: "20px" }}>
-      <h2>Previous Games</h2>
+    <div className={styles.container}>
+      <h1>Previous Games</h1>
 
       {/* Container for Top Three Games */}
-      <div>
-        <h4>Top Three Games</h4>
-        <div style={{display: "flex", flexWrap: "wrap"  }}>
-          <CardComponent style={{ margin: "5px" }}/>
-          <CardComponent style={{ margin: "5px" }}/>
-          <CardComponent style={{ margin: "5px" }} />
+      <div className={styles.top_three}>
+        <h4 className={styles.header}>Top Three Games</h4>
+        <div className={styles.top_three_cards}>
+          <CardComponent/>
+          <CardComponent/>
+          <CardComponent/>
         </div>
       </div>
 
       {/* Container for Other Games */}
-      <div>
-        <h4>Other Games</h4>
-        <div style={{ display: "flex", flexWrap: "wrap" }}>
-          <CardComponent style={{ margin: "10px" }} />
-          <CardComponent style={{ margin: "10px" }} />
-          <CardComponent style={{ margin: "10px" }} />
-          <CardComponent style={{ margin: "10px" }} />
+      <div className={styles.other_games}>
+        <h4 className={styles.header}> Other Games</h4>
+        <div className={styles.other_cards}>
+          <CardComponent/>
+          <CardComponent/>
+          <CardComponent/>
+          <CardComponent/>
         </div>
       </div>
     </div>

@@ -147,7 +147,7 @@ const TypingGameComponent = () => {
       )}
       {statsObject && ( // Check if statsObject is not null before displaying it
         <div className={styles.stats}>
-          <h3 className={styles.stat_header}>Stats:</h3>
+          <h3 className={styles.stat_header}>Current Game Stats</h3>
           <p><b>Sentence:</b> {statsObject.sentence}</p>
           <p><b>Correct Characters:</b> {statsObject.correctcharacters}</p>
           <p><b>Incorrect Characters:</b> {statsObject.incorrectcharacters}</p>

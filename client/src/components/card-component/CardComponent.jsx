@@ -6,7 +6,7 @@ const CardComponent = () => {
     <div className={styles.card}>
       <h3 className={styles.cardheading}>Game 1</h3>
       <p className={styles.cardcontent}>
-        <b>Sentence:</b> 
+        <b>Sentence: </b> 
       </p>
       <p className={styles.cardcontent}>
         <b>Correct Characters:</b> 
