@@ -1,30 +1,9 @@
-# Hack School Workshop 3 - React 
+# Hack School Fall 2023: Workshop 3 Solutions
 
-We will begin by creating a directory for the client.
- ```
-$ mkdir client 
-$ cd client
- ```
+Workshop Topic: React & Next.js
 
-Inside this directory, we will initialize a node project using npm (or yarn)
+To run the code:
 
-```
-npm init -y
-```
-Within our project directory, we will now proceed to create a Next.js app. This can be achieved by running the following command:
-
-npx create-next-app frontend 
-
-Answer the prompted questions as follows:
-
-Would you like to use TypeScript? No.
-
-Would you like to use ESLint? Yes.
-
-Would you like to use Tailwind CSS? No.
-
-Would you like to use src/ directory? Yes.
-
-Would you like to use App Router? (recommended) No (since we are using an express backend).
-
-Would you like to customize the default import alias? No
+1. `cd client`
+2. `npm install`
+3. `npm run dev`
