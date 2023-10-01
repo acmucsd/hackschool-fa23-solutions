@@ -1,2 +1,2 @@
-# hackschool-fa23-solutions
-A solutions repo for Hack School Fall 2023 content.
+# Hack School Fall 2023: Workshop 2 Solutions
+Workshop Topic: JavaScript
