@@ -5,20 +5,20 @@ const express = require('express');
 //const cors = require('cors');
 //const dotenv = require('dotenv');
 const app = express(); 
-//const PORT = process.env.PORT || 5000;
-
+// const PORT = process.env.PORT || 5000;
+const PORT = 6543;
 // get the routes
 const gameRoutes = require('./routes/gameRoutes');
-const sentenceRoutes = require('./routes/sentenceRoutes');
+// const sentenceRoutes = require('./routes/sentenceRoutes');
 
-app.use(cors());
+// app.use(cors());
 app.use(express.json());
 
-dotenv.config(); // loading the environment vars 
+// dotenv.config(); // loading the environment vars 
 
 // mount routes here ---> 
 app.use('/home', gameRoutes);
-app.use('/sentenceBank', sentenceRoutes);
+// app.use('/sentenceBank', sentenceRoutes);
 
 app.use(function (err, req, res, next) {
   console.error(err); // This should log more details about the error

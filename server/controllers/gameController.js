@@ -4,7 +4,7 @@ const GameStats = require("../models/gameStats");
 
 // Controller functions
 // simply get all game stats
-exports.getGameStats = async (req, res) => {
+const getGameStats = async (req, res) => {
   try {
     // for now, we will be returning an array of game stats objects  
     const gameStats = [
@@ -38,7 +38,8 @@ exports.getGameStats = async (req, res) => {
       },
     ];
     
-    console.log(res.json(gameStats)); // print the array of gamestats 
+    // console.log(res.json(gameStats)); // print the array of gamestats 
+    res.status(200).json({ gameStats });
   } catch (error) {
     // if there is an error, we print an error message with error code 500
     res.status(500).json({ error: "Failed to retrieve game stats" });
@@ -47,7 +48,7 @@ exports.getGameStats = async (req, res) => {
 
 
 // Creating/Posting a new gamestats object 
-exports.createGameStats = async (req, res) => {
+const createGameStats = async (req, res) => {
 
   try {
     const {gamestat} = {}
@@ -58,3 +59,5 @@ exports.createGameStats = async (req, res) => {
   }
 };
 
+
+module.exports = { getGameStats, createGameStats }
