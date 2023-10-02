@@ -2,20 +2,37 @@
 
 //dependencies 
 const express = require('express');
-//const cors = require('cors');
-//const dotenv = require('dotenv');
+const cors = require('cors');
+
+const mongoose = require('mongoose');
+const dotenv = require('dotenv');
 const app = express(); 
-// const PORT = process.env.PORT || 5000;
-const PORT = 6543;
+const PORT = process.env.PORT || 5000;
+
 // get the routes
 const gameRoutes = require('./routes/gameRoutes');
-// const sentenceRoutes = require('./routes/sentenceRoutes');
+//const sentenceRoutes = require('./routes/sentenceRoutes');
 
-// app.use(cors());
+app.use(cors());
 app.use(express.json());
 
-// dotenv.config(); // loading the environment vars 
+dotenv.config(); // loading the environment vars 
 
+// db connection setup
+mongoose.connect(process.env.DB_URL, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+})
+.then(() => console.log('Connected to MongoDB'))
+.catch((err) => console.error('Error connecting to MongoDB:', err));
+
+
+
+// for testing purposes 
+// app.use((req, res, next) => {
+//   console.log(`${new Date().toString()} => ${req.originalUrl}`, req.body);
+//   next();
+// });
 // mount routes here ---> 
 app.use('/home', gameRoutes);
 // app.use('/sentenceBank', sentenceRoutes);
