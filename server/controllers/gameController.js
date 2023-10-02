@@ -12,6 +12,16 @@ const getGameStats = async (req, res) => {
   }
 };
 
+
+const getTop3GameStats = async (req, res) => {
+  try {
+    const top3GameStats = await GameStats.find().sort({wpm: -1}).limit(3);
+    res.json(top3GameStats);
+  } catch (error) {
+    res.status(500).json({ error: 'Failed to retrieve top 3 game stats' });
+  }
+};
+
 // CREATES a new gameStats object in the MongoDB database 
 const createGameStats = async (req, res) => {
   try {
@@ -24,4 +34,4 @@ const createGameStats = async (req, res) => {
 };
 
 
-module.exports = { getGameStats, createGameStats }
+module.exports = { getGameStats, createGameStats, getTop3GameStats }
