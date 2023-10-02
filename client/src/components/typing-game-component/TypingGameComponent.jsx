@@ -10,9 +10,23 @@ import axios from "axios"; // to make HTTP requests to the backend
 import styles from "./TypingGameComponent.module.css";
 console.log("Rendering the Typing Game component...");
 
-const sentenceData = ["Joining the ACM club was the best decision I made in college!",
-"ACM club members collaborated on a challenging software development project",
-"ACM Hack is hosting a React workshop :O", "ChatGPT helped me write these sentences, possibly :)"];
+const sentenceData = [
+  "The sun rose over the horizon, casting a warm golden glow.",
+  "She sipped her coffee and watched the raindrops dance on the windowpane.",
+  "The old oak tree stood tall and majestic in the middle of the field.",
+  "The cat curled up on the windowsill, purring contentedly.",
+  "In the quiet of the night, the stars twinkled like diamonds in the sky.",
+  "The aroma of freshly baked bread wafted through the air.",
+  "He gazed at the old photo, lost in memories of days gone by.",
+  "The waves crashed against the rocky shore, creating a soothing melody.",
+  "The laughter of children echoed through the park as they played.",
+  "The detective examined the clues carefully, searching for answers.",
+  "She opened the dusty book and was transported to a different world.",
+  "The cityscape glittered with lights as night fell.",
+  "The chef carefully seasoned the dish with a pinch of salt.",
+  "The hiker reached the summit and marveled at the breathtaking view.",
+  "The clock ticked relentlessly, marking the passage of time."
+];
 
 const TypingGameComponent = () => {
   const [gameStarted, setGameStarted] = useState(false); // checks if the game has begun
@@ -49,7 +63,7 @@ const TypingGameComponent = () => {
     if (phase === PhaseType.NotStarted) {
       console.log(phase)
       resetTyping();
-      setGameStarted(true); // game started == trye 
+      setGameStarted(true); // game started == true 
     }
   };
 
@@ -71,8 +85,8 @@ const TypingGameComponent = () => {
         sentence: chars, 
         correctcharacters: correctChar, // number of correct words 
         incorrectcharacters: errorChar,
-        wpm: calculateWPM(),
-        time: (getDuration()/ 1000)/60, // miliseconds --> mins 
+        wpm: calculateWPM().toFixed(2),
+        time: ((getDuration()/ 1000)/60).toFixed(2), // miliseconds --> mins 
       }
       sendGameStats(stats); // the axios request 
       setStatsObject(stats); // this will be used to print the object on the screen
@@ -117,7 +131,10 @@ const TypingGameComponent = () => {
             if (key === "Escape") {
               // we can potentially change it from escape char to a button lmk tho
               resetTyping();
-            } else if (key === "Backspace") {
+            } else if (key == "Enter") {
+              handleGameEnd(); // using the enter key indicates that the user is done playing 
+            }
+            else if (key === "Backspace") {
               deleteTyping(false);
             } else if (key.length === 1) {
               insertTyping(key);
@@ -127,7 +144,6 @@ const TypingGameComponent = () => {
             e.preventDefault();
           }}
           tabIndex={0}
-          onBlur={handleGameEnd} // when the user clicks away from the component (which is in <h1> rn)
         >
           {chars.split("").map((char, index) => {
             let state = charsState[index]; // check state at curr pos
@@ -151,8 +167,8 @@ const TypingGameComponent = () => {
           <p><b>Sentence:</b> {statsObject.sentence}</p>
           <p><b>Correct Characters:</b> {statsObject.correctcharacters}</p>
           <p><b>Incorrect Characters:</b> {statsObject.incorrectcharacters}</p>
-          <p><b>Words Per Minute:</b> {statsObject.wpm}</p>
-          <p><b>Time (in mins):</b> {statsObject.time}</p>
+          <p><b>Words Per Minute:</b> {statsObject.wpm} words per min</p>
+          <p><b>Time (in mins):</b> {statsObject.time} mins</p>
         </div>
       )}
     </div>
