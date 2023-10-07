@@ -1,6 +1,6 @@
 .card {
-    width: 450px;
-    min-height: 250px;
+    width: 350px;
+    min-height: 150px;
     border: 2px solid #f9a857;
     border-radius: 5px;
     padding: 10px;
@@ -12,13 +12,6 @@
   
   .card:hover {
     transform: scale(1.05);
-  }
-  
-  .cardheading {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color:#f9a857;
-    text-align: center;
   }
   
   .cardcontent {
