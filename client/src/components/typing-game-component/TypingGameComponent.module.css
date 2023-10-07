@@ -40,8 +40,7 @@
 .typing_component {
     padding: 1rem;
     margin-bottom: 2rem;
-    border: 2px solid black;
-    border-radius: 5px;
+    border-bottom: 1px solid black;
     font-size: 2rem;
     text-align: center;
 }
