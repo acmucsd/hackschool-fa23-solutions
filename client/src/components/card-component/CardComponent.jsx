@@ -4,7 +4,6 @@ import styles from "./CardComponent.module.css";
 const CardComponent = ({ sentence, correctCharacters, incorrectCharacters, wpm, time }) => {
   return (
     <div className={styles.card}>
-      <h3 className={styles.cardheading}>Game 1</h3>
       <p className={styles.cardcontent}>
         <b>Sentence: </b> {sentence}
       </p>

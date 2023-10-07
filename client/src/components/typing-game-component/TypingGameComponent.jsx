@@ -5,6 +5,7 @@
  *              (ii) used to calculate score
  */
 import React, { useEffect, useCallback, useState } from "react";
+import CardComponent from "../card-component/CardComponent";
 import useTypingGame, {PhaseType} from "react-typing-game-hook"; // for playing the game
 import axios from "axios"; // to make HTTP requests to the backend
 import styles from "./TypingGameComponent.module.css";
@@ -69,8 +70,8 @@ const TypingGameComponent = () => {
       console.log(getDuration());
       let stats = { 
         sentence: chars, 
-        correctcharacters: correctChar, // number of correct words 
-        incorrectcharacters: errorChar,
+        correctCharacters: correctChar, // number of correct words 
+        incorrectCharacters: errorChar,
         wpm: calculateWPM(),
         time: (getDuration()/ 1000)/60, // miliseconds --> mins 
       }
@@ -146,14 +147,7 @@ const TypingGameComponent = () => {
         </div>
       )}
       {statsObject && ( // Check if statsObject is not null before displaying it
-        <div className={styles.stats}>
-          <h3 className={styles.stat_header}>Current Game Stats</h3>
-          <p><b>Sentence:</b> {statsObject.sentence}</p>
-          <p><b>Correct Characters:</b> {statsObject.correctcharacters}</p>
-          <p><b>Incorrect Characters:</b> {statsObject.incorrectcharacters}</p>
-          <p><b>Words Per Minute:</b> {statsObject.wpm}</p>
-          <p><b>Time (in mins):</b> {statsObject.time}</p>
-        </div>
+        <CardComponent {...statsObject}/>
       )}
     </div>
   );
