@@ -41,6 +41,19 @@ const TypingGameComponent = () => {
     countErrors: "everytime",
   });
 
+  // Axios for communicating with the backend (i.e. sending game stats)
+  // Endpoint: 'http://localhost:5000/home/game'
+  const sendGameStats = async (stats) => {
+    try {
+      console.log("sending game stats to the backend");
+      // Make a POST request to create/update the game stats document
+      await axios.post("http://localhost:5000/home/game", stats);
+      console.log("Game stats created/updated:", stats);
+    } catch (error) {
+      console.error("Failed to create/update game stats:", error);
+    }
+  };
+
   // triggered when start button is clicked
   // updates setGameStart
   const handleGameStart = () => {
