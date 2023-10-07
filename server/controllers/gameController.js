@@ -1,11 +1,9 @@
 // controllers/gameController.js
-const GameStats = require('../models/gameStats');
+// Note: These API requests dont actually save stuff/fetch from the database. These are stubs
+const GameStats = require("../models/gameStats");
 
-// Controller functions
-
-// simply get ststas
-// R
-exports.getGameStats = async (req, res) => {
+// GET all gameStats 
+const getGameStats = async (req, res) => {
   try {
     const gameStats = await GameStats.find();
     res.json(gameStats);
@@ -14,9 +12,18 @@ exports.getGameStats = async (req, res) => {
   }
 };
 
-// create a new doc 
-// C
-exports.createGameStats = async (req, res) => {
+
+const getTop3GameStats = async (req, res) => {
+  try {
+    const top3GameStats = await GameStats.find().sort({wpm: -1}).limit(3);
+    res.json(top3GameStats);
+  } catch (error) {
+    res.status(500).json({ error: 'Failed to retrieve top 3 game stats' });
+  }
+};
+
+// CREATES a new gameStats object in the MongoDB database 
+const createGameStats = async (req, res) => {
   try {
     // Create a new game stats document in the database
     const newGameStats = await GameStats.create(req.body);
@@ -27,18 +34,4 @@ exports.createGameStats = async (req, res) => {
 };
 
 
-// dont really need this rn but i have this just in case we wanna add features 
-// U
-exports.updateGameStats = async (req, res) => {
-  try {
-    // Update the game stats document in the database
-    const updatedGameStats = await GameStats.findByIdAndUpdate(
-      req.params.id,
-      req.body,
-      { new: true }
-    );
-    res.json(updatedGameStats);
-  } catch (error) {
-    res.status(500).json({ error: 'Failed to update game stats' });
-  }
-};
+module.exports = { getGameStats, createGameStats, getTop3GameStats }

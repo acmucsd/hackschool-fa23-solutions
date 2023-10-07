@@ -1,7 +1,7 @@
 .card {
-    width: 250px;
-    height: 250px;
-    border: 1px solid red;
+    width: 350px;
+    min-height: 150px;
+    border: 2px solid #f9a857;
     border-radius: 5px;
     padding: 10px;
     margin: 10px;
@@ -14,11 +14,7 @@
     transform: scale(1.05);
   }
   
-  .cardheading {
-    font-size: 1.5rem;
-    font-weight: bold;
-  }
-  
   .cardcontent {
     margin-top: 8px;
+    overflow-wrap: break-word;
   }

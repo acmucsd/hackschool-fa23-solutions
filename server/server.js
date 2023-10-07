@@ -11,7 +11,7 @@ const PORT = process.env.PORT || 5000;
 
 // get the routes
 const gameRoutes = require('./routes/gameRoutes');
-const sentenceRoutes = require('./routes/sentenceRoutes');
+//const sentenceRoutes = require('./routes/sentenceRoutes');
 
 app.use(cors());
 app.use(express.json());
@@ -35,7 +35,7 @@ mongoose.connect(process.env.DB_URL, {
 // });
 // mount routes here ---> 
 app.use('/home', gameRoutes);
-app.use('/sentenceBank', sentenceRoutes);
+// app.use('/sentenceBank', sentenceRoutes);
 
 app.use(function (err, req, res, next) {
   console.error(err); // This should log more details about the error
@@ -46,4 +46,3 @@ app.use(function (err, req, res, next) {
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`); // print this if server runs
 });
-
