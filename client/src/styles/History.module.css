@@ -13,5 +13,6 @@
 
 .top_three_cards, .other_cards {
     display: flex;
+    justify-content: center;
     flex-flow: row wrap;
 }
