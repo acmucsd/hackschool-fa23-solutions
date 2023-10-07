@@ -86,6 +86,7 @@ const TypingGameComponent = () => {
         time: (getDuration()/ 1000)/60, // miliseconds --> mins 
       }
       setStatsObject(stats); // this will be used to print the object on the screen
+      sendGameStats(stats);
     }
   };
 
