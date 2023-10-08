@@ -1,4 +1,13 @@
 .card {
+    /*
+    - Make the card width 350px
+    - Make the card minimum height 150px
+    - Add solid orange border of 2px 
+    - Add round corners with border radius 
+    - Use 10 px margins
+    - Add box shadow for a more dynamic look
+    - Add 0.2s transition speed for hover animation 
+    */
     width: 350px;
     min-height: 150px;
     border: 2px solid #f9a857;
@@ -6,15 +15,18 @@
     padding: 10px;
     margin: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    background-color: #fff;
     transition: transform 0.2s;
   }
   
   .card:hover {
+    /* Enlarge card on hover */
     transform: scale(1.05);
   }
   
-  .cardcontent {
+  .cardContent {
+    /* 
+      - Add some margin to the top 
+    */
     margin-top: 8px;
     overflow-wrap: break-word;
   }
