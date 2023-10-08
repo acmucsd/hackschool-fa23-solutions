@@ -1,5 +1,5 @@
 /**
- * useEffect : (i) lets you synchronize a component with an external system (lmao)
+ * useEffect : (i) lets you synchronize a component with an external system
  *             (ii) we will be using it to check game completion conditions
  */
 import React, { useEffect, useState } from "react";
@@ -85,7 +85,7 @@ const TypingGameComponent = () => {
     if (phase === PhaseType.Started && charsState.length === chars.length + 1) {
       handleGameEnd();
     }
-  }, [phase, chars.length, handleGameEnd, charsState.length]);
+  }, [phase, charsState.length]);
 
   // here, we render the game
   return (
