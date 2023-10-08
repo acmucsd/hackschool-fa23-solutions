@@ -1,12 +1,6 @@
+// Not using this file
 import React, {useState} from "react";
-import axios from "axios";
-<<<<<<< HEAD:frontend/src/components/InputSentenceComponent.js
-
-// update 
-// delete 
-=======
 import styles from './InputSentenceComponent.module.css';
->>>>>>> 8059b7fc342f730108a0fab8ff8c2b938d4fc0fa:frontend/src/components/InputSentenceComponent.jsx
 
 const InputSentenceComponent =  () =>  {
     const [sentence, setSentence] = useState(""); // make a default empty string state to avoid getting undefined objs 
@@ -14,19 +8,10 @@ const InputSentenceComponent =  () =>  {
     const handleInputChange = (event) => {
         setSentence(event.target.value);
     } 
-
-    const handleSubmit = async (event) => {
-        event.preventDefault();
-        try {
-          await axios.post("http://localhost:5000/sentenceBank/sentence", {
-            sentence,
-          });
-          console.log("Sentence successfully submitted!");
-          // Optionally, you can reset the input field after successful submission
-          setSentence("");
-        } catch (error) {
-          console.error("Failed to submit sentence:", error);
-        }
+    // Just prints the sentence for now in the console
+    // Later on, you can add the sentence to the database when we get to MongoDB
+    const handleSubmit = () => {
+        console.log(sentence);
     };
 
 
