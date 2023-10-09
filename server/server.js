@@ -3,9 +3,11 @@
 //dependencies 
 const express = require('express');
 const cors = require('cors');
-
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
+
+dotenv.config(); // loading the environment vars 
+
 const app = express(); 
 const PORT = process.env.PORT || 5000;
 
@@ -15,8 +17,6 @@ const gameRoutes = require('./routes/gameRoutes');
 
 app.use(cors());
 app.use(express.json());
-
-dotenv.config(); // loading the environment vars 
 
 // db connection setup
 mongoose.connect(process.env.DB_URL, {

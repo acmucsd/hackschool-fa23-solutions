@@ -11,7 +11,7 @@
     text-align: center;
 }
 
-.top_three_cards, .other_cards {
+.top_three_cards, .all_cards {
     display: flex;
     justify-content: center;
     flex-flow: row wrap;
