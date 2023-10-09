@@ -16,10 +16,10 @@ export default function History() {
         </div>
       </div>
 
-      {/* Container for Other Games */}
-      <div className={styles.other_games}>
-        <h4 className={styles.header}> Other Games</h4>
-        <div className={styles.other_cards}>
+      {/* Container for All Games */}
+      <div className={styles.all_games}>
+        <h4 className={styles.header}> All Games</h4>
+        <div className={styles.all_cards}>
           <CardComponent/>
           <CardComponent/>
           <CardComponent/>
