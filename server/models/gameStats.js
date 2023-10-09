@@ -5,9 +5,9 @@ const mongoose = require('mongoose');
 // the model represents a structured schema for a collection, and allows us to do crud lmao
 const gameStatsSchema = new mongoose.Schema({
   sentence: { type: String }, 
-  correctcharacters: {type: Number}, 
-  incorrectcharacters:{ type: Number},
-  wpm : {type: Number}, 
+  correctCharacters: {type: Number}, 
+  incorrectCharacters:{ type: Number},
+  wpm: {type: Number}, 
   time: {type: Number}
 });
 

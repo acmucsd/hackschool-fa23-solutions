@@ -1,9 +1,6 @@
+// Not using this file
 import React, {useState} from "react";
 import axios from "axios";
-
-// update 
-// delete 
-
 import styles from './InputSentenceComponent.module.css';
 
 const InputSentenceComponent =  () =>  {
@@ -12,20 +9,21 @@ const InputSentenceComponent =  () =>  {
     const handleInputChange = (event) => {
         setSentence(event.target.value);
     } 
-
+    // Just prints the sentence for now in the console
+    // Later on, you can add the sentence to the database when we get to MongoDB
     const handleSubmit = async (event) => {
-        event.preventDefault();
-        try {
-          await axios.post("http://localhost:5000/sentenceBank/sentence", {
-            sentence,
-          });
-          console.log("Sentence successfully submitted!");
-          // Optionally, you can reset the input field after successful submission
-          setSentence("");
-        } catch (error) {
-          console.error("Failed to submit sentence:", error);
-        }
-    };
+      event.preventDefault();
+      try {
+        await axios.post("http://localhost:5000/sentenceBank/sentence", {
+          sentence,
+        });
+        console.log("Sentence successfully submitted!");
+        // Optionally, you can reset the input field after successful submission
+        setSentence("");
+      } catch (error) {
+        console.error("Failed to submit sentence:", error);
+      }
+  };
 
 
   return (

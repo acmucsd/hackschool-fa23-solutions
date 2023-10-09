@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import CardComponent from "@/components/card-component/CardComponent";
 import styles from '../styles/History.module.css';
-import axios from 'axios';
+import API from "../api/API";
 
 export default function History() {
   const [gameStats, setGameStats] = useState([]);
@@ -12,8 +12,7 @@ export default function History() {
     // You can use fetch or axios to make the API request to getGameStats and getTop3GameStats endpoints
     // Once you have the data, set it in the state variables gameStats and top3GameStats
     // For example:
-    axios.get("http://localhost:5000/home/game")
-      .then((response) => {
+    API.getGameStats().then((response) => {
         setGameStats(response.data);
         console.log(response.data);
       })
@@ -21,8 +20,7 @@ export default function History() {
         console.error("Failed to fetch game stats:", error);
       });
 
-    axios.get("http://localhost:5000/home/game/top3")
-      .then((response) => {
+    API.getTopThreeGameStats().then((response) => {
         setTop3GameStats(response.data);
         console.log(response.data);
       })
@@ -43,8 +41,8 @@ export default function History() {
             <CardComponent
               key={index}
               sentence={game.sentence}
-              correctCharacters={game.correctcharacters}
-              incorrectCharacters={game.incorrectcharacters}
+              correctCharacters={game.correctCharacters}
+              incorrectCharacters={game.incorrectCharacters}
               wpm={game.wpm}
               time={game.time}
             />
@@ -53,15 +51,15 @@ export default function History() {
       </div>
 
       {/* Container for Other Games */}
-      <div className={styles.other_games}>
-        <h4 className={styles.header}>Other Games</h4>
-        <div className={styles.other_cards}>
+      <div className={styles.all_games}>
+        <h4 className={styles.header}>All Games</h4>
+        <div className={styles.all_cards}>
           {gameStats.map((game, index) => (
             <CardComponent
               key={index}
               sentence={game.sentence}
-              correctCharacters={game.correctcharacters}
-              incorrectCharacters={game.incorrectcharacters}
+              correctCharacters={game.correctCharacters}
+              incorrectCharacters={game.incorrectCharacters}
               wpm={game.wpm}
               time={game.time}
             />
