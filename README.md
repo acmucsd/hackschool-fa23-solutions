@@ -1,3 +1,3 @@
-# Hack School Fall 2023: Workshop 6 Solutions
+# Hack School Fall 2023: Workshop Solutions
 
-Workshop Topic: Deployment
+A solutions repo for Hack School Fall 2023
