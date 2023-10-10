@@ -1,7 +1,7 @@
 import axios from "axios"; // to make HTTP requests to the backend
 
 // Change the port if needed
-const serverURL = 'http://localhost:4000';
+const serverURL = 'https://hackschool-fa23-api.onrender.com';
 
 const API = {
     getGameStats: function() {
