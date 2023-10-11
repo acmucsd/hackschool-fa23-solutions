@@ -56,6 +56,10 @@ body {
 /* Homepage Styling */
 
 .center {
+    /*
+    - Display as block which takes up entire container space
+    - Set margin-left and margin-right to auto to center
+    */
     display: block;
     margin-left: auto;
     margin-right: auto;
@@ -68,17 +72,68 @@ body {
 /* HackRacer Game Page Styling */
 
 #sentence {
+    /*
+    - Display as block which takes up entire container space
+    - Centers text
+    - Change font-size to 25px
+    */
     display: block;
-    justify-content: center;
     text-align: center;
     font-size: 25px;
 }
 
-.stats {
-    display: block;
+.stats_header {
+    /*
+    - Display as block which takes up entire container space
+    - Centers text
+    - Sets margin 30px vertically and 0px horizontally
+    */
+    font-size: 35px;
     text-align: center;
+    margin: 30px 0px;
+}
+
+.stats {
+    /*
+    - Use flexbox
+    - Align items in the center horizontally
+    - Makes all items into columns
+    - Set font size to 25px
+    */
+    display: flex;
+    align-items: center;
+    flex-direction: column;
     font-size: 25px;
 }
+
+.row {
+    /*
+    - Use flexbox
+    - Makes all items into rows
+    */
+    display: flex;
+    flex-direction: row;
+}
+
+.cell {
+    /*
+    - Set width to 180px
+    - Remove any spacing with 0px margin
+    - Add padding of 10px
+    - Create black solid border around cell
+    - Break words if it goes past the cell width
+    */
+    width: 180px;
+    margin: 0px;
+    padding: 10px;
+    border: 1px solid black;
+    word-wrap: break-word;
+}
+
+.header .cell {
+    background-color: #f9a857;
+}
+
 
 /* Create a Sentence Page Styling */
 
@@ -128,7 +183,7 @@ textarea {
 
 #sentence-submission {
     /*
-    - Change background color to black
+    - Change background color to orange
     - Change font color to orange #f9a857
     - Increase the font size to 20px
     - Add padding 10px vertically 24 px horizontally
