@@ -3,8 +3,8 @@
  *             (ii) we will be using it to check game completion conditions
  */
 import React, { useEffect, useState } from "react";
-import CardComponent from "../card-component/CardComponent";
-import useTypingGame, {PhaseType} from "react-typing-game-hook"; // for playing the game
+import CardComponent from "../game-history-component/gameHistory";
+import useTypingGame, { PhaseType } from "react-typing-game-hook"; // for playing the game
 import styles from "./TypingGameComponent.module.css";
 
 const sentenceData = [
@@ -29,10 +29,10 @@ const TypingGameComponent = () => {
   const [gameStarted, setGameStarted] = useState(false); // checks if the game has begun
   const [statsObject, setStatsObject] = useState(null); // ensures object is not undefined
   const [selectedSentence, setSelectedSentence] = useState(sentenceData[0]); // sentence for typing game
- 
+
   // useTypingGame to keep track of, and modify chars being typed and other stuff
   const {
-    states: { chars, charsState, phase, correctChar, errorChar},
+    states: { chars, charsState, phase, correctChar, errorChar },
     actions: { insertTyping, resetTyping, deleteTyping, getDuration },
   } = useTypingGame(selectedSentence, {
     skipCurrentWordOnSpace: true,
@@ -47,30 +47,29 @@ const TypingGameComponent = () => {
     if (phase === PhaseType.NotStarted) {
       console.log(phase);
       resetTyping();
-      setGameStarted(true); // game started == true 
+      setGameStarted(true); // game started == true
     }
   };
 
-
   const calculateWPM = () => {
     let numWords = selectedSentence.split(" ").length;
-    let time = (getDuration()/ 1000)/60;
+    let time = getDuration() / 1000 / 60;
     console.log("number of words: " + numWords);
-    console.log("duration in mins: " + time)
-    return numWords / time; 
+    console.log("duration in mins: " + time);
+    return numWords / time;
   };
 
-  // if the game has ended, we send the game stats to the DB 
+  // if the game has ended, we send the game stats to the DB
   const handleGameEnd = () => {
     if (phase === PhaseType.Ended) {
       console.log(getDuration());
-      let stats = { 
-        sentence: chars, 
-        correctCharacters: correctChar, // number of correct words 
+      let stats = {
+        sentence: chars,
+        correctCharacters: correctChar, // number of correct words
         incorrectCharacters: errorChar,
         wpm: calculateWPM(),
-        time: (getDuration()/ 1000)/60, // miliseconds --> mins 
-      }
+        time: getDuration() / 1000 / 60, // miliseconds --> mins
+      };
       setStatsObject(stats); // this will be used to print the object on the screen
     }
   };
@@ -90,59 +89,64 @@ const TypingGameComponent = () => {
   // here, we render the game
   return (
     <div className={styles.typing_game}>
-      { !gameStarted ?  (
+      {!gameStarted ? (
         <div className={styles.start_game}>
           <div className={styles.sentence_dropdown}>
             <h3 className={styles.sentence_label}>Select a sentence</h3>
-            <select name="sentence-select" 
-            id={styles.sentence_selector}
-            onChange={(e) => setSelectedSentence(e.target.value)}>
-                {sentenceData.map((sentence, index) => (
-                    <option key={index}>{sentence}</option>
-                ))}
+            <select
+              name="sentence-select"
+              id={styles.sentence_selector}
+              onChange={(e) => setSelectedSentence(e.target.value)}
+            >
+              {sentenceData.map((sentence, index) => (
+                <option key={index}>{sentence}</option>
+              ))}
             </select>
-        </div>
-          <button className={styles.start_button} onClick={handleGameStart}>Start</button>
+          </div>
+          <button className={styles.start_button} onClick={handleGameStart}>
+            Start
+          </button>
         </div>
       ) : (
         <div className={styles.typing_component}>
           <p>Click on the sentence below and start typing!</p>
-        <h2 
-          onKeyDown={(e) => {
-            // call different functions based on the key clicked
-            const key = e.key;
-            if (key === "Escape") {
-              // we can potentially change it from escape char to a button lmk tho
-              resetTyping();
-            } else if (key === "Backspace") {
-              deleteTyping(false);
-            } else if (key.length === 1) {
-              insertTyping(key);
-            }
-            // preventDefault makes sure that the keys dont do what they normally do, and instead
-            // execute the functions that we have specified above
-            e.preventDefault();
-          }}
-          tabIndex={0}
-          onBlur={handleGameEnd} // when the user clicks away from the component (which is in <h1> rn)
-        >
-          {chars.split("").map((char, index) => {
-            let state = charsState[index]; // check state at curr pos
-            // if not done -> black
-            // if correct -> green
-            // else red
-            let color = state === 0 ? "#292F36" : state === 1 ? "#417B5A" : "#FF6B6B";
-            return (
-              <span key={char + index} style={{ color }}>
-                {char}
-              </span>
-            );
-          })}
-        </h2>
+          <h2
+            onKeyDown={(e) => {
+              // call different functions based on the key clicked
+              const key = e.key;
+              if (key === "Escape") {
+                // we can potentially change it from escape char to a button lmk tho
+                resetTyping();
+              } else if (key === "Backspace") {
+                deleteTyping(false);
+              } else if (key.length === 1) {
+                insertTyping(key);
+              }
+              // preventDefault makes sure that the keys dont do what they normally do, and instead
+              // execute the functions that we have specified above
+              e.preventDefault();
+            }}
+            tabIndex={0}
+            onBlur={handleGameEnd} // when the user clicks away from the component (which is in <h1> rn)
+          >
+            {chars.split("").map((char, index) => {
+              let state = charsState[index]; // check state at curr pos
+              // if not done -> black
+              // if correct -> green
+              // else red
+              let color =
+                state === 0 ? "#292F36" : state === 1 ? "#417B5A" : "#FF6B6B";
+              return (
+                <span key={char + index} style={{ color }}>
+                  {char}
+                </span>
+              );
+            })}
+          </h2>
         </div>
       )}
       {statsObject && ( // Check if statsObject is not null before displaying it
-        <CardComponent {...statsObject}/>
+        <CardComponent {...statsObject} />
       )}
     </div>
   );

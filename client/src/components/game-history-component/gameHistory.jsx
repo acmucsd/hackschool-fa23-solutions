@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./CardComponent.module.css";
+import styles from "./gameHistory.module.css";
 
 const CardComponent = ({ sentence, correctCharacters, incorrectCharacters, wpm, time }) => {
   return (

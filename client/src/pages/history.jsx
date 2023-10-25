@@ -1,5 +1,5 @@
-import CardComponent from "@/components/card-component/CardComponent";
-import styles from '../styles/History.module.css'
+import CardComponent from "@/components/game-history-component/gameHistory";
+import styles from "../styles/History.module.css";
 
 export default function History() {
   return (
@@ -10,9 +10,9 @@ export default function History() {
       <div className={styles.top_three}>
         <h4 className={styles.header}>Top Three Games</h4>
         <div className={styles.top_three_cards}>
-          <CardComponent/>
-          <CardComponent/>
-          <CardComponent/>
+          <CardComponent />
+          <CardComponent />
+          <CardComponent />
         </div>
       </div>
 
@@ -20,10 +20,10 @@ export default function History() {
       <div className={styles.all_games}>
         <h4 className={styles.header}> All Games</h4>
         <div className={styles.all_cards}>
-          <CardComponent/>
-          <CardComponent/>
-          <CardComponent/>
-          <CardComponent/>
+          <CardComponent />
+          <CardComponent />
+          <CardComponent />
+          <CardComponent />
         </div>
       </div>
     </div>
