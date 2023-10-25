@@ -1,4 +1,3 @@
-import Link from "next/link";
 import InputSentenceComponent from "../components/input-component/InputSentenceComponent";
 
 
