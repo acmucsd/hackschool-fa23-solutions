@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./CardComponent.module.css";
-
+//d
 const CardComponent = ({ sentence, correctCharacters, incorrectCharacters, wpm, time }) => {
   return (
     <div className={styles.card}>

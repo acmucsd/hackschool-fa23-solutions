@@ -1,7 +1,7 @@
 import React, {useState } from "react";
 import useTypingGame, {PhaseType} from "react-typing-game-hook"; // for playing the game
 import styles from "./TypingGameComponent.module.css";
-
+// d
 const sentenceData = [
   "The sun rose over the horizon, casting a warm golden glow.",
   "She sipped her coffee and watched the raindrops dance on the windowpane.",
@@ -23,9 +23,7 @@ const sentenceData = [
 const TypingGameComponent = () => {
   const [gameStarted, setGameStarted] = useState(false); // checks if the game has begun
   const [selectedSentence, setSelectedSentence] = useState(sentenceData[0]); // sentence for typing game
-  //TODO
 
-  // GIVEN
   // useTypingGame to keep track of, and modify chars being typed and other stuff
   const {
     states: { chars, charsState, phase, correctChar, errorChar},
@@ -43,7 +41,7 @@ const TypingGameComponent = () => {
     if (phase === PhaseType.NotStarted) {
       console.log(phase);
       resetTyping();
-      setGameStarted(true); // game started == true -------------------------
+      setGameStarted(true); // set gameStarted to true
     }
   };
 
@@ -54,7 +52,6 @@ const TypingGameComponent = () => {
         <div className={styles.start_game}>
           <div className={styles.sentence_dropdown}>
             
-            
             <h3 className={styles.sentence_label}>Select a sentence</h3>
             
             <select name="sentence-select" 
@@ -64,16 +61,13 @@ const TypingGameComponent = () => {
                     <option key={index}>{sentence}</option>
                 ))}
             </select>
-
             
         </div>
-        {/* -------------------------------------------- */}
           <button className={styles.start_button} onClick={handleGameStart}>Start</button>
         </div>
       ) : (
         <div className={styles.typing_component}>
           <div>
-            {/* -------------------------------------------- */}
             <h2>{selectedSentence}</h2>
           </div>
         </div>

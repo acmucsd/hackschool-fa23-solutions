@@ -10,9 +10,9 @@ export default function History() {
       <div className={styles.top_three}>
         <h4 className={styles.header}>Top Three Games</h4>
         <div className={styles.top_three_cards}>
-          <CardComponent/>
-          <CardComponent/>
-          <CardComponent/>
+          <CardComponent sentence={"A sentence"}/>
+          <CardComponent sentence={"another sentence"}/>
+          <CardComponent sentence={"another another sentence"}/>
         </div>
       </div>
 
@@ -20,10 +20,15 @@ export default function History() {
       <div className={styles.all_games}>
         <h4 className={styles.header}> All Games</h4>
         <div className={styles.all_cards}>
-          <CardComponent/>
-          <CardComponent/>
-          <CardComponent/>
-          <CardComponent/>
+          <CardComponent
+            sentence={"hahahahhah"}
+            correctCharacters={20}
+            incorrectCharacters={34}
+            wpm={42}
+            time={1}/>
+          <CardComponent sentence={"blablabalbal"}/>
+          <CardComponent sentence={"more sentences"}/>
+          <CardComponent sentence={"sentences more"}/>
         </div>
       </div>
     </div>
