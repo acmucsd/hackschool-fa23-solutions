@@ -5,8 +5,8 @@
 import React, { useEffect, useState } from "react";
 import useTypingGame, { PhaseType } from "react-typing-game-hook"; // for playing the game
 import CardComponent from "../card-component/CardComponent";
-import API from "../../api/API";
 import styles from "./TypingGameComponent.module.css";
+import axios from "axios";
 
 const sentenceData = [
   "The sun rose over the horizon, casting a warm golden glow.",
@@ -45,10 +45,9 @@ const TypingGameComponent = () => {
   // Endpoint: 'http://localhost:5000/home/game'
   const sendGameStats = async (stats) => {
     try {
-      console.log("sending game stats to the backend");
       // Make a POST request to create/update the game stats document
-      await API.createGame(stats);
-      console.log("Game stats created/updated:", stats);
+      const response = await axios.post("http://localhost:4000/home/game", stats);
+      console.log(response.data);
     } catch (error) {
       console.error("Failed to create/update game stats:", error);
     }
@@ -76,8 +75,6 @@ const TypingGameComponent = () => {
 
   // if the game has ended, we send the game stats to the DB 
   const handleGameEnd = () => {
-    if (phase === PhaseType.Ended) {
-      console.log(getDuration());
       let stats = { 
         sentence: chars, 
         correctCharacters: correctChar, // number of correct words 
@@ -87,7 +84,6 @@ const TypingGameComponent = () => {
       }
       setStatsObject(stats); // this will be used to print the object on the screen
       sendGameStats(stats);
-    }
   };
 
   /**
