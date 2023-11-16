@@ -10,7 +10,7 @@ export default function History() {
   // Fetch game stats data from your backend API here
   const fetchData = async () => {
     try {
-      const response = await axios.get("http://localhost:4000/home/game");
+      const response = await axios.get("http://localhost:4000/api/game");
       setGameStats(response.data);
     }
     catch(error) {

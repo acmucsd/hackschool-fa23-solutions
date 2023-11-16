@@ -46,7 +46,7 @@ const TypingGameComponent = () => {
   const sendGameStats = async (stats) => {
     try {
       // Make a POST request to create/update the game stats document
-      const response = await axios.post("http://localhost:4000/home/game", stats);
+      const response = await axios.post("http://localhost:4000/api/game", stats);
       console.log(response.data);
     } catch (error) {
       console.error("Failed to create/update game stats:", error);

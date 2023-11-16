@@ -1,48 +1,27 @@
-// server.js 
-
-//dependencies 
-const express = require('express');
+const express = require ('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
-const dotenv = require('dotenv');
-
-dotenv.config(); // loading the environment vars 
-
-const app = express(); 
-const PORT = process.env.PORT || 5000;
-
-// get the routes
-const gameRoutes = require('./routes/gameRoutes');
-//const sentenceRoutes = require('./routes/sentenceRoutes');
-
-app.use(cors());
-app.use(express.json());
-
-// db connection setup
-mongoose.connect(process.env.DB_URL, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-})
-.then(() => console.log('Connected to MongoDB'))
-.catch((err) => console.error('Error connecting to MongoDB:', err));
+const config = require('./config');
+const router = require('./routes/gameRoutes')
 
 
+// Create an Express server
+const server = express();
 
-// for testing purposes 
-// app.use((req, res, next) => {
-//   console.log(`${new Date().toString()} => ${req.originalUrl}`, req.body);
-//   next();
-// });
-// mount routes here ---> 
-app.use('/home', gameRoutes);
-// app.use('/sentenceBank', sentenceRoutes);
+server.use(cors());
+server.use(express.json());
 
-app.use(function (err, req, res, next) {
-  console.error(err); // This should log more details about the error
-  res.status(500).json({ error: err.message });
+// Mount /api onto our server
+server.use('/api', router);
+
+// Connect to MongoDB database
+mongoose.connect(config.databaseUrl, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true }).then(() => {
+  console.log('Connected to MongoDB database');
 });
 
-// starting the actual react server on port 5000
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`); // print this if server runs
+// Start the server
+server.listen(config.PORT, () => {
+    console.log("Server started on PORT " + config.PORT);
 });
